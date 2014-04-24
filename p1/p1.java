@@ -46,7 +46,7 @@ public class p1 {
 		ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
 		for (int i=0; i<NTHREDS ; i++ ) {
 		    Callable<Long> worker = new Mod_check_callable(i*STEP, STEP);
-			Future<Long> submit = executor.submit(worker);
+			  Future<Long> submit = executor.submit(worker);
 		    list.add(submit);
   		}
 	    long sum = 0;
@@ -60,7 +60,6 @@ public class p1 {
 	        e.printStackTrace();
 	      }
 	    }
-	    System.out.println(sum);
 	    executor.shutdown();
 	    return sum;
 	}
@@ -69,17 +68,17 @@ public class p1 {
 		long start = System.currentTimeMillis();
 		System.out.println(fastest_way());
 		double elapsedTimeInSec = (System.currentTimeMillis() - start);
-		System.out.println(elapsedTimeInSec);
+		System.out.println("formula:"+elapsedTimeInSec);
 		
 		start = System.currentTimeMillis();
 		System.out.println(alternate_method_forloop());
 		elapsedTimeInSec = (System.currentTimeMillis()- start);
-		System.out.println(elapsedTimeInSec);
+		System.out.println("forloop:"+elapsedTimeInSec);
 
 		start = System.currentTimeMillis();
 		System.out.println(alternate_method_multthreading());
 		elapsedTimeInSec = (System.currentTimeMillis()- start);
-		System.out.println(elapsedTimeInSec);
+		System.out.println("multithread:"+elapsedTimeInSec);
 
 
 	}
